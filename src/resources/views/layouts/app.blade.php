@@ -17,6 +17,14 @@
       <div class="header-logo">
         <a href="/"><img src="{{ asset('images/logo.svg') }}" alt="ロゴ"></a>
       </div>
+      @if (Auth::check())
+      <div class="header-logout">
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit">ログアウト</button>
+        </form>
+      </div>
+      @endif
     </div>
   </header>
 
