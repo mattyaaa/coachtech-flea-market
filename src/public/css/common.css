@@ -1,0 +1,53 @@
+/* ヘッダーのスタイル */
+.header {
+    background: rgba(0, 0, 0, 1);
+    width: 2000px;
+    height: 100px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header-logo {
+    background-color: #000;
+    padding: 10px;
+    border-radius: 4px;
+    position: absolute;
+    width: 370px;
+    height: 40px;
+    top: 22px;
+    left: 25px;
+}
+
+.header-logo img {
+    display: block;
+    width: 400px;
+    height: 38px;
+    top: 20px;
+    left: 10px;
+    
+}
+
+.header-logout form {
+    display: flex;
+    align-items: center;
+}
+
+.header-logout button {
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header-logout button:hover {
+    background-color: #0056b3;
+}
