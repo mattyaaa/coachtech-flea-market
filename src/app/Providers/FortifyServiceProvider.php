@@ -20,7 +20,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);
     }
 
     /**
