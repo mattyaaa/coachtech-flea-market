@@ -17,13 +17,28 @@
       <div class="header-logo">
         <a href="/"><img src="{{ asset('images/logo.svg') }}" alt="ロゴ"></a>
       </div>
-      @if (Auth::check())
-      <div class="header-logout">
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button type="submit">ログアウト</button>
-        </form>
+      @if (!request()->is('login') && !request()->is('register'))
+      <div class="header-search">
+        <input type="text" placeholder="なにをお探しですか？">
       </div>
+      <nav class="header-nav">
+        <ul>
+          @if (Auth::check())
+          <li>
+            <form method="POST" action="{{ route('logout') }}" class="logout-form">
+              @csrf
+              <button type="submit">ログアウト</button>
+            </form>
+          </li>
+          <li><a href="/mypage">マイページ</a></li>
+          <li><a href="/sell" class="sell">出品</a></li>
+          @else
+          <li><a href="/login">ログイン</a></li>
+          <li><a href="/mypage">マイページ</a></li>
+          <li><a href="/sell" class="sell">出品</a></li>
+          @endif
+        </ul>
+      </nav>
       @endif
     </div>
   </header>
