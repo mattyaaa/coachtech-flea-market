@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function () {
 
     // 商品出品処理
     Route::post('/sell', [ItemController::class, 'store']);
+
+    // コメント投稿処理
+    Route::post('/item/{item_id}/comment', [ItemController::class, 'addComment']);
     
     // プロフィール画面
     Route::get('/mypage', [ProfileController::class, 'show']);

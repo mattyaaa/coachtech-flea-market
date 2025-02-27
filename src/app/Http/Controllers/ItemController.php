@@ -28,6 +28,7 @@ class ItemController extends Controller
     public function show($item_id)
     {
         $item = Product::with('comments.user', 'categories', 'condition')->findOrFail($item_id);
+        $item->formatted_price = '¥' . number_format($item->price) . ' (税込)';
         return view('item.show', compact('item'));
     }
 
@@ -63,5 +64,21 @@ class ItemController extends Controller
         $item->save();
 
         return redirect('/')->with('status', '商品が出品されました。');
+    }
+
+    // 商品へのコメント追加処理
+    public function addComment(Request $request, $item_id)
+    {
+        $request->validate([
+            'comment' => 'required|string'
+        ]);
+
+        $comment = new Comment();
+        $comment->user_id = Auth::id();
+        $comment->product_id = $item_id;
+        $comment->content = $request->input('comment');
+        $comment->save();
+
+        return redirect()->back()->with('status', 'コメントが追加されました。');
     }
 }
