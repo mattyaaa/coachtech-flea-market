@@ -27,7 +27,7 @@ class ItemController extends Controller
     // 商品詳細画面
     public function show($item_id)
     {
-        $item = Product::with('comments.user', 'categories', 'condition', 'brand')->findOrFail($item_id);
+        $item = Product::with('comments.user', 'categories', 'condition')->findOrFail($item_id);
         return view('item.show', compact('item'));
     }
 
@@ -45,6 +45,7 @@ class ItemController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'brand' => 'nullable|string|max:255',
         ]);
 
         $item = new Product();
@@ -52,6 +53,7 @@ class ItemController extends Controller
         $item->description = $request->input('description');
         $item->price = $request->input('price');
         $item->user_id = Auth::id();
+        $item->brand = $request->input('brand');
 
         if ($request->hasFile('image')) {
             $filePath = $request->file('image')->store('item_images', 'public');
@@ -62,5 +64,4 @@ class ItemController extends Controller
 
         return redirect('/')->with('status', '商品が出品されました。');
     }
-
 }
