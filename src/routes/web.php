@@ -18,9 +18,26 @@ use App\Http\Controllers\ProfileController;
 // 商品一覧画面（トップ画面）
 Route::get('/',[ItemController::class, 'index']);
 
+// 商品一覧画面（トップ画面）_マイリスト
+Route::get('/?tab=mylist', [ItemController::class, 'myList'])->middleware('auth');
+
+// 商品詳細画面
+Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
 // 認証が必要なルートグループ
 Route::middleware('auth')->group(function () {
+    // 商品購入画面
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show']);
+    
+    // 住所変更ページ
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress']);
+    
+    // 商品出品画面
+    Route::get('/sell', [ItemController::class, 'create']);
+
+    // 商品出品処理
+    Route::post('/sell', [ItemController::class, 'store']);
+    
     // プロフィール画面
     Route::get('/mypage', [ProfileController::class, 'show']);
 
