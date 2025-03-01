@@ -10,24 +10,29 @@ use Illuminate\Support\Facades\Auth;
 class ItemController extends Controller
 {
     // 商品一覧画面（トップ画面）
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $items = Product::where(function ($query) use ($user) {
-            if ($user) {
-                // 自分が出品した商品を除外
-                $query->where('user_id', '!=', $user->id);
-            }
-        })->get();
-        return view('item.index', compact('items'));
-    }
+        $tab = $request->query('tab', 'recommend');
 
-    // 商品一覧画面（トップ画面）_マイリスト
-    public function myList()
-    {
-        $user = Auth::user();
-        $items = $user->favorites; // assuming there is a relationship defined in the User model
-        return view('item.index', compact('items'));
+        if ($tab == 'mylist') {
+            if ($user) {
+                $items = Product::whereHas('favorites', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                })->get();
+            } else {
+                $items = collect(); // 空のコレクションを返す
+            }
+        } else {
+            $items = Product::where(function ($query) use ($user) {
+                if ($user) {
+                    // 自分が出品した商品を除外
+                    $query->where('user_id', '!=', $user->id);
+                }
+            })->get();
+        }
+
+        return view('item.index', compact('items', 'tab'));
     }
 
     // 商品詳細画面

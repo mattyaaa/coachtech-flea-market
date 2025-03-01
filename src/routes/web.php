@@ -25,9 +25,6 @@ Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
 // 認証が必要なルートグループ
 Route::middleware('auth')->group(function () {
-    // 商品一覧画面（トップ画面）_マイリスト
-    Route::get('/?tab=mylist', [ItemController::class, 'myList']);
-
     // 商品購入画面
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show']);
     

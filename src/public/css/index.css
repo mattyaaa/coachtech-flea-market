@@ -16,6 +16,7 @@
 }
 
 .links a.highlight {
+    font-weight: bold;
     color: red;
 }
 

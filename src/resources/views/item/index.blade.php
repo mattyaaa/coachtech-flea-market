@@ -8,25 +8,28 @@
 <main>
   <div class="content">
     <div class="links">
-      <a href="" class="{{ auth()->check() ? '' : 'highlight' }}">おすすめ</a>
-      <a href="/?tab=mylist" class="{{ auth()->check() ? 'highlight' : '' }}">マイリスト</a>
+      <a href="/" class="{{ request('tab') != 'mylist' ? 'highlight' : '' }}">おすすめ</a>
+      <a href="/?tab=mylist" class="{{ request('tab') == 'mylist' ? 'highlight' : '' }}">マイリスト</a>
     </div>
     <div class="items">
-      @foreach ($items as $item)
-        <div class="item">
-          <a href="/item/{{ $item->id }}">
-            @if ($item->image)
-              <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
-            @else
-              <img src="{{ asset('images/default.png') }}" alt="{{ $item->name }}">
-            @endif
-            <p>{{ $item->name }}</p>
-            @if ($item->is_sold)
-              <p class="sold">Sold</p>
-            @endif
-          </a>
-        </div>
-      @endforeach
+      @if (request('tab') == 'mylist' && !Auth::check())
+      @else
+        @foreach ($items as $item)
+          <div class="item">
+            <a href="/item/{{ $item->id }}">
+              @if ($item->image)
+                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+              @else
+                <img src="{{ asset('images/default.png') }}" alt="{{ $item->name }}">
+              @endif
+              <p>{{ $item->name }}</p>
+              @if ($item->is_sold)
+                <p class="sold">Sold</p>
+              @endif
+            </a>
+          </div>
+        @endforeach
+      @endif
     </div>
   </div>
 </main>
