@@ -8,8 +8,8 @@
 <main>
   <div class="content">
     <div class="links">
-      <a href="" class="recommended">おすすめ</a>
-      <a href="/?tab=mylist">マイリスト</a>
+      <a href="" class="{{ auth()->check() ? '' : 'highlight' }}">おすすめ</a>
+      <a href="/?tab=mylist" class="{{ auth()->check() ? 'highlight' : '' }}">マイリスト</a>
     </div>
     <div class="items">
       @foreach ($items as $item)

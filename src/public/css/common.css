@@ -64,6 +64,7 @@ html {
     padding: 10px;
     text-decoration: none;
     border-radius: 4px;
+    font-size: 25px;
 }
 
 .header-nav ul li a:hover {
