@@ -20,7 +20,7 @@
         <p>ブランド: {{ $item->brand ?? 'ブランド情報なし' }}</p>
         <p>価格: {{ $item->formatted_price }}</p>
         <div class="item-stats">
-          <span><i class="fa fa-thumbs-up"></i> {{ $item->likes_count }}</span>
+          <span><i class="fa fa-thumbs-up"></i> {{ $item->favorites_count }}</span>
           <span><i class="fa fa-comments"></i> {{ $item->comments_count }}</span>
         </div>
         <a href="/purchase/{{ $item->id }}" class="btn btn-primary">購入手続きへ</a>
@@ -33,7 +33,7 @@
               {{ $category->name }}@if(!$loop->last), @endif
             @endforeach
           </p>
-          <p>商品の状態: {{ $item->condition->name }}</p>
+          <p>商品の状態: {{ $item->condition }}</p>
         </div>
       </div>
     </div>

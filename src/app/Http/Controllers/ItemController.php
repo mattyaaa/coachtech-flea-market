@@ -12,7 +12,13 @@ class ItemController extends Controller
     // 商品一覧画面（トップ画面）
     public function index()
     {
-        $items = Product::all();
+        $user = Auth::user();
+        $items = Product::where(function ($query) use ($user) {
+            if ($user) {
+                // 自分が出品した商品を除外
+                $query->where('user_id', '!=', $user->id);
+            }
+        })->get();
         return view('item.index', compact('items'));
     }
 
@@ -27,8 +33,11 @@ class ItemController extends Controller
     // 商品詳細画面
     public function show($item_id)
     {
-        $item = Product::with('comments.user', 'categories', 'condition')->findOrFail($item_id);
+        $item = Product::with(['comments.user', 'categories', 'condition'])->findOrFail($item_id);
         $item->formatted_price = '¥' . number_format($item->price) . ' (税込)';
+        $item->comments_count = $item->comments()->count();
+        $item->favorites_count = $item->favorites()->count();
+
         return view('item.show', compact('item'));
     }
 
