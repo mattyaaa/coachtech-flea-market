@@ -14,25 +14,28 @@ class ItemController extends Controller
     {
         $user = Auth::user();
         $tab = $request->query('tab', 'recommend');
+        $search = $request->query('search', '');
 
         if ($tab == 'mylist') {
             if ($user) {
-                $items = Product::whereHas('favorites', function ($query) use ($user) {
-                    $query->where('user_id', $user->id);
-                })->get();
+                $items = Product::where('name', 'LIKE', "%{$search}%")
+                    ->whereHas('favorites', function ($query) use ($user) {
+                        $query->where('user_id', $user->id);
+                    })->get();
             } else {
                 $items = collect(); // 空のコレクションを返す
             }
         } else {
-            $items = Product::where(function ($query) use ($user) {
-                if ($user) {
-                    // 自分が出品した商品を除外
-                    $query->where('user_id', '!=', $user->id);
-                }
-            })->get();
+            $items = Product::where('name', 'LIKE', "%{$search}%")
+                ->where(function ($query) use ($user) {
+                    if ($user) {
+                        // 自分が出品した商品を除外
+                        $query->where('user_id', '!=', $user->id);
+                    }
+                })->get();
         }
 
-        return view('item.index', compact('items', 'tab'));
+        return view('item.index', compact('items', 'tab', 'search'));
     }
 
     // 商品詳細画面

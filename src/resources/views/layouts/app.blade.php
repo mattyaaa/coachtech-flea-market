@@ -19,7 +19,11 @@
       </div>
       @if (!request()->is('login') && !request()->is('register'))
       <div class="header-search">
-        <input type="text" placeholder="なにをお探しですか？">
+         <form id="search-form" action="/" method="GET">
+            @csrf
+          <input type="hidden" name="tab" value="{{ request('tab') }}">
+          <input type="text" name="search" id="search-input" placeholder="なにをお探しですか？" value="{{ request('search') }}">
+        </form>
       </div>
       <nav class="header-nav">
         <ul>
@@ -46,6 +50,15 @@
   <main>
     @yield('content')
   </main>
+
+  <script>
+    document.getElementById('search-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('search-form').submit();
+      }
+    });
+  </script>
 </body>
 
 </html>
