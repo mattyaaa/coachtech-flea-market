@@ -19,6 +19,7 @@ class Product extends Model
         'category',
         'condition',
         'price',
+        'is_sold',
     ];
 
     public function user()

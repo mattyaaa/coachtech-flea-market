@@ -52,3 +52,8 @@
     margin-top: 10px;
     font-size: 25px;
 }
+
+.sold {
+    color: red;
+    font-weight: bold;
+}

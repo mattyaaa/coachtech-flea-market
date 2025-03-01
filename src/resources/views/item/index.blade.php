@@ -21,6 +21,9 @@
               <img src="{{ asset('images/default.png') }}" alt="{{ $item->name }}">
             @endif
             <p>{{ $item->name }}</p>
+            @if ($item->is_sold)
+              <p class="sold">Sold</p>
+            @endif
           </a>
         </div>
       @endforeach
