@@ -17,8 +17,8 @@
       </div>
       <div class="item-info">
         <h2>{{ $item->name }}</h2>
-        <p>ブランド: {{ $item->brand ?? 'ブランド情報なし' }}</p>
-        <p>価格: {{ $item->formatted_price }}</p>
+        <p>{{ $item->brand ?? 'ブランド情報なし' }}</p>
+        <p>{{ $item->formatted_price }}</p>
         <div class="item-stats">
           <span><i class="fa fa-thumbs-up"></i> {{ $item->favorites_count }}</span>
           <span><i class="fa fa-comments"></i> {{ $item->comments_count }}</span>

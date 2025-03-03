@@ -46,6 +46,7 @@ class ProfileController extends Controller
         $user->postal_code = $request->input('postal_code');
         $user->address = $request->input('address');
         $user->building = $request->input('building');
+        $user->first_login = false;
         $user->save();
 
         return redirect('/mypage')->with('status', 'プロフィールが更新されました。');

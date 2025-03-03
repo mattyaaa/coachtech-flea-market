@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,7 @@ Route::middleware('auth')->group(function () {
     // プロフィール画面_出品した商品一覧
     Route::get('/mypage?tab=sell', [ProfileController::class, 'showSales']);
 });
+
+// 登録画面と登録処理のルート
+Route::get('register', [RegisterController::class, 'showRegistrationForm']);
+Route::post('register', [RegisterController::class, 'register']);
