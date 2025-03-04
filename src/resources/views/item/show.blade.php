@@ -17,27 +17,28 @@
       </div>
       <div class="item-info">
         <h2>{{ $item->name }}</h2>
-        <p>{{ $item->brand ?? 'ブランド情報なし' }}</p>
-        <p>{{ $item->formatted_price }}</p>
-        <div class="item-stats">
-          <span><i class="fa fa-thumbs-up"></i> {{ $item->favorites_count }}</span>
-          <span><i class="fa fa-comments"></i> {{ $item->comments_count }}</span>
+        <p class="item-info-brand">{{ $item->brand ?? 'ブランド情報なし' }}</p>
+        <p class="item-info-price">{{ $item->formatted_price }}</p>
+        <div class="item-detail-stats">
+          <span class="item-like-button" data-item-id="{{ $item->id }}">
+            <i class="fa-regular fa-star {{ $item->is_favorited ? 'liked' : '' }}"></i> 
+            <span class="item-favorites-count">{{ $item->favorites_count }}</span>
+          </span>
+          <span class="item-comments-count"><i class="fa-regular fa-comment"></i> {{ $item->comments_count }}</span>
         </div>
         <a href="/purchase/{{ $item->id }}" class="btn btn-primary">購入手続きへ</a>
         <h3>商品説明</h3>
-        <p>{{ $item->description }}</p>
+        <p class="item-detail-description">{{ $item->description }}</p>
         <h3>商品の情報</h3>
         <div class="item-extra-info">
-          <p>カテゴリ: 
+          <p>カテゴリー
             @foreach ($item->categories as $category)
               {{ $category->name }}@if(!$loop->last), @endif
             @endforeach
           </p>
-          <p>商品の状態: {{ $item->condition }}</p>
+          <p>商品の状態 {{ $item->condition }}</p>
         </div>
-      </div>
-    </div>
-    <div class="comments-section">
+        <div class="comments-section">
       <h3>コメント ({{ $item->comments_count }})</h3>
       @foreach ($item->comments as $comment)
         <div class="comment">
@@ -49,19 +50,19 @@
           </div>
         </div>
       @endforeach
-      @auth
-        <div class="comment-form">
-          <h4>商品へのコメント</h4>
-          <form action="/item/{{ $item->id }}/comment" method="POST">
-            @csrf
-            <div class="form-group">
-              <textarea name="comment" class="form-control" rows="3" placeholder="コメントを入力してください"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">コメントを送信する</button>
-          </form>
-        </div>
-      @endauth
+      <div class="comment-form">
+        <h4>商品へのコメント</h4>
+        <form action="/item/{{ $item->id }}/comment" method="POST">
+          @csrf
+          <div class="form-group">
+            <textarea name="comment" class="form-control" rows="10" ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">コメントを送信する</button>
+        </form>
+      </div>
     </div>
   </div>
+</div>
+</div>
 </main>
 @endsection
