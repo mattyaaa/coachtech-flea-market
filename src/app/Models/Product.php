@@ -51,4 +51,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories');
     }
+
+    public function getFormattedPriceAttribute()
+    {
+        return '¥' . number_format($this->price, 0);
+    }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,15 @@ Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::middleware('auth')->group(function () {
     // 商品購入画面
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show']);
+
+    // 商品購入処理
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
     
     // 住所変更ページ
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress']);
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'changeAddress']);
+
+    // 住所変更処理
+    Route::post('/purchase/{item_id}/update-address', [PurchaseController::class, 'updateAddress']);
     
     // 商品出品画面
     Route::get('/sell', [ItemController::class, 'create']);
