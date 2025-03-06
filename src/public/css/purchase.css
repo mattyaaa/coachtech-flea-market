@@ -1,0 +1,168 @@
+/* purchase.css */
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.purchase-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.item-image {
+    flex: 1;
+    min-width: 200px;
+    margin-right: 20px;
+}
+
+.item-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.item-info h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.item-info-price {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.purchase-form {
+    margin-top: 20px;
+}
+
+.purchase-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.purchase-column {
+    flex: 1;
+    padding: 10px;
+}
+
+.purchase-column h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.delivery-address {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-bottom: rgba(0, 0, 0, 1) 1px solid;
+    width: 70%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form-group .form-control {
+    width: 270px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control-static {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(0, 115, 204, 1);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #e74c3c;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 400px;
+}
+
+.btn-primary:hover {
+    background-color: #c0392b;
+}
+
+.btn-secondary:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.subtotal-box {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.subtotal-item-box {
+    border: 1px solid rgba(0, 0, 0, 1);
+    padding: 20px;
+}
+
+.subtotal {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.subtotal td {
+    padding: 10px;
+    font-size: 24px;
+}
+
+.subtotal-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 1);
+    margin: 20px 0;
+    width: 70%;
+}
