@@ -1,1 +1,96 @@
-/* 送付先住所変更画面のスタイル */
+/* メインとコンテナのスタイル */
+.edit-address-main {
+    padding: 20px;
+}
+
+.edit-address-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* タイトルのスタイル */
+.edit-address-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 1);
+}
+
+/* フォームのスタイル */
+.edit-address-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* フォームグループのスタイル */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ラベルのスタイル */
+.edit-address-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+}
+
+/* 入力フィールドのスタイル */
+.edit-address-input {
+    padding: 10px;
+    border: 1px solid rgba(95, 95, 95, 1);
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+/* フォーカス時のスタイル */
+.edit-address-input:focus {
+    border-color: rgb(251, 127, 127);
+    outline: none;
+}
+
+/* ボタンのスタイル */
+.edit-address-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 26px;
+    color: #ffffff;
+    background-color: rgba(255, 85, 85, 1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+/* ボタンのホバー時のスタイル */
+.edit-address-button:hover {
+    background-color: rgb(251, 127, 127);
+}
+
+/* エラーメッセージのスタイル */
+.text-danger {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+    .edit-address-container {
+        padding: 10px;
+    }
+
+    .edit-address-title {
+        font-size: 20px;
+    }
+
+    .edit-address-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

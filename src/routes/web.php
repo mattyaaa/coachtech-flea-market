@@ -18,27 +18,25 @@ use App\Http\Controllers\PurchaseController;
 */
 
 // 商品一覧画面（トップ画面）
-Route::get('/',[ItemController::class, 'index']);
-
+Route::get('/', [ItemController::class, 'index']);
 
 // 商品詳細画面
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
-
 // 認証が必要なルートグループ
 Route::middleware('auth')->group(function () {
     // 商品購入画面
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show']);
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
 
     // 商品購入処理
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
     
     // 住所変更ページ
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'changeAddress']);
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.editAddress');
 
     // 住所変更処理
-    Route::post('/purchase/{item_id}/update-address', [PurchaseController::class, 'updateAddress']);
-    
+    Route::put('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress']);
+
     // 商品出品画面
     Route::get('/sell', [ItemController::class, 'create']);
 
@@ -56,10 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/mypage/profile', [ProfileController::class, 'update']);
 
     // プロフィール画面_購入した商品一覧
-    Route::get('/mypage?tab=buy', [ProfileController::class, 'showPurchases']);
+    Route::get('/mypage/buy', [ProfileController::class, 'showPurchases']);
     
     // プロフィール画面_出品した商品一覧
-    Route::get('/mypage?tab=sell', [ProfileController::class, 'showSales']);
+    Route::get('/mypage/sell', [ProfileController::class, 'showSales']);
 });
 
 // 登録画面と登録処理のルート

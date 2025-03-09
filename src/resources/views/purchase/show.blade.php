@@ -47,7 +47,7 @@
           <div class="purchase-column delivery-address">
             <div class="address-header">
               <h3>配送先</h3>
-              <a href="/purchase/{{ $item->id }}/change-address" class="btn btn-secondary">変更する</a>
+             <a href="/purchase/address/{{ $item->id }}" class="btn btn-secondary">住所を変更する</a>
             </div>
             <div class="form-group">
               <p class="form-control-static">〒{{ $profile->postal_code }}</p>

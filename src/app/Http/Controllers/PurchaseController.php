@@ -19,10 +19,9 @@ class PurchaseController extends Controller
         if (!$user->profile) {
             $profile = new Profile();
             $profile->user_id = $user->id;
-            $profile->profile_image = '';
-            $profile->name = '';
             $profile->postal_code = '';
             $profile->address = '';
+            $profile->building = '';
             $profile->save();
         } else {
             $profile = $user->profile;
@@ -35,9 +34,6 @@ class PurchaseController extends Controller
     public function purchase(Request $request, $item_id)
     {
         $request->validate([
-            'address' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:8',
-            'phone_number' => 'required|string|max:15',
             'payment_method' => 'required|string|in:コンビニ支払い,カード支払い',
         ]);
 
@@ -45,29 +41,29 @@ class PurchaseController extends Controller
         return redirect('/')->with('status', '購入手続きが完了しました。');
     }
 
-    // 送付先住所変更画面を表示する
-    public function changeAddress($item_id)
+    // 住所変更画面を表示する
+    public function editAddress($item_id)
     {
         $item = Product::findOrFail($item_id);
         $user = Auth::user();
         $profile = $user->profile;
-        return view('purchase.change-address', compact('item', 'profile'));
+        return view('purchase.edit_address', compact('item', 'profile'));
     }
 
     // 送付先住所変更処理
     public function updateAddress(Request $request, $item_id)
     {
         $request->validate([
-            'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:8',
-            'phone_number' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'building' => 'nullable|string|max:255',
         ]);
 
         $user = Auth::user();
         $profile = $user->profile;
-        $profile->address = $request->input('address');
         $profile->postal_code = $request->input('postal_code');
-        $profile->phone_number = $request->input('phone_number');
+        $profile->address = $request->input('address');
+        $profile->building = $request->input('building');
         $profile->save();
 
         return redirect()->route('purchase.show', ['item_id' => $item_id])->with('status', '住所が更新されました。');
