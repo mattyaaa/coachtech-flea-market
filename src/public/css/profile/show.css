@@ -1,1 +1,170 @@
 /* プロフィール画面のスタイル */
+/* メインとコンテナのスタイル */
+.profile-main {
+    display: flex;
+    padding: 20px;
+}
+
+.profile-container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* ヘッダーのスタイル */
+.profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 50px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-info .user-name {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.profile-info .btn {
+    padding: 10px 20px;
+    font-size: 26px;
+    text-decoration: none;
+    color:#FF5555;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid #FF5555;
+    margin-left: 500px;
+}
+
+.profile-info .btn:hover {
+    background-color: #FF5555;
+    color: white;
+}
+
+/* コンテンツのスタイル */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* リンクのスタイル */
+.links {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(95, 95, 95, 1);
+}
+
+.links a {
+    text-decoration: none;
+    color: #5F5F5F;
+    font-size: 24px;
+    margin: 20px;
+}
+
+.links a.highlight {
+    font-weight: bold;
+    color: red;
+}
+
+/* 商品一覧のスタイル */
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item {
+    padding: 10px;
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+}
+
+.item a {
+    text-decoration: none;
+    color: rgba(95, 95, 95, 1);
+}
+
+.item a:hover {
+    color: #007bff;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.item p {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+/* セクションのスタイル */
+.profile-section {
+    padding: 20px;
+}
+
+.profile-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.profile-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-section li {
+    margin-bottom: 10px;
+}
+
+.profile-section a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.profile-section a:hover {
+    text-decoration: underline;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-image img {
+        width: 100px;
+        height: 100px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .profile-info h1 {
+        font-size: 24px;
+    }
+
+    .profile-section h2 {
+        font-size: 20px;
+    }
+}

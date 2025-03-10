@@ -16,41 +16,56 @@
         @endif
       </div>
       <div class="profile-info">
-        <h1>ユーザー名{{ $user->name }}</h1>
+        <h1 class="user-name">ユーザー名{{ $user->name }}</h1>
         <a href="{{ url('/mypage/profile') }}" class="btn btn-secondary">プロフィールを編集</a>
       </div>
     </div>
 
     <div class="profile-content">
-      <div class="profile-section">
-        <h2>出品した商品一覧</h2>
+      <div class="links">
+        <a href="/mypage?tab=sell" class="{{ request('tab') == 'sell' ? 'highlight' : '' }}">出品した商品</a>
+        <a href="/mypage?tab=buy" class="{{ request('tab') == 'buy' ? 'highlight' : '' }}">購入した商品</a>
+      </div>
+
+    @if (request('tab') == 'sell')
         @if ($products->count() > 0)
-          <ul>
+          <div class="items">
             @foreach ($products as $product)
-              <li>
-                <a href="{{ url('/item/' . $product->id) }}">{{ $product->name }}</a>
-              </li>
+              <div class="item">
+                <a href="{{ url('/item/' . $product->id) }}">
+                  @if ($product->image)
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                  @else
+                    <img src="{{ asset('images/default.png') }}" alt="{{ $product->name }}">
+                  @endif
+                </a>
+              </div>
             @endforeach
-          </ul>
+          </div>
         @else
           <p>出品した商品はありません。</p>
         @endif
-      </div>
-
-      <div class="profile-section">
-        <h2>購入した商品一覧</h2>
+      @elseif (request('tab') == 'buy')
         @if ($purchases->count() > 0)
-          <ul>
+          <div class="items">
             @foreach ($purchases as $purchase)
-              <li>
-                <a href="{{ url('/item/' . $purchase->product->id) }}">{{ $purchase->product->name }}</a>
-              </li>
+              <div class="item">
+                <a href="{{ url('/item/' . $purchase->product->id) }}">
+                  @if ($purchase->product->image)
+                    <img src="{{ asset('storage/' . $purchase->product->image) }}" alt="{{ $purchase->product->name }}">
+                  @else
+                    <img src="{{ asset('images/default.png') }}" alt="{{ $purchase->product->name }}">
+                  @endif
+                </a>
+              </div>
             @endforeach
-          </ul>
+          </div>
         @else
           <p>購入した商品はありません。</p>
         @endif
-      </div>
+      @else
+        <p>表示するタブを選択してください。</p>
+      @endif
     </div>
   </div>
 </main>
