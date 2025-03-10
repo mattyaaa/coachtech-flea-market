@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class ProfileController extends Controller
 {
@@ -11,7 +12,14 @@ class ProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('profile.show', compact('user'));
+        
+        // 出品した商品を取得
+        $products = $user->products;
+        
+        // 購入した商品を取得
+        $purchases = $user->purchases;
+
+        return view('profile.show', compact('user', 'products', 'purchases'));
     }
 
     //プロフィール編集画面を表示する
