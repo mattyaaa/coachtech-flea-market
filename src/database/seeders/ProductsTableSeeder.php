@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Category;
 
 
 class ProductsTableSeeder extends Seeder
@@ -47,7 +49,7 @@ class ProductsTableSeeder extends Seeder
                 'name' => '玉ねぎ3束',
                 'description' => '新鮮な玉ねぎ3束のセット',
                 'image' => 'images/iLoveIMGd.jpg',
-                'category' => '食品',
+                'category' => 'キッチン',
                 'condition' => 'やや傷や汚れあり',
                 'price' => 300.00,
                 'created_at' => Carbon::now(),
@@ -131,7 +133,7 @@ class ProductsTableSeeder extends Seeder
                 'name' => 'メイクセット',
                 'description' => '便利なメイクアップセット',
                 'image' => 'images/MakeupSet.jpg',
-                'category' => '美容',
+                'category' => 'コスメ',
                 'condition' => '目立った傷や汚れなし',
                 'price' => 2500.00,
                 'created_at' => Carbon::now(),

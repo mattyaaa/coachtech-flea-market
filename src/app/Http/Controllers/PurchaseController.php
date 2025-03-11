@@ -21,7 +21,7 @@ class PurchaseController extends Controller
             $profile->user_id = $user->id;
             $profile->postal_code = '';
             $profile->address = '';
-            $profile->building = '';
+            $profile->building_name = '';
             $profile->save();
         } else {
             $profile = $user->profile;
