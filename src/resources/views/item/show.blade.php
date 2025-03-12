@@ -36,7 +36,7 @@
               <span class="category-label">{{ $category->name }}</span>@if(!$loop->last), @endif
             @endforeach
           </span></p>
-          <p><span class="label">商品の状態</span><span class="value">{{ $item->condition }}</span></p>
+          <p><span class="label">商品の状態</span><span class="value">{{ $item->condition->name }}</span></p>
         </div>
         <div class="comments-section">
       <h3>コメント ({{ $item->comments_count }})</h3>
