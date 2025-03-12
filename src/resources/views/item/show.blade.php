@@ -31,12 +31,12 @@
         <p class="item-detail-description">{{ $item->description }}</p>
         <h3>商品の情報</h3>
         <div class="item-extra-info">
-          <p>カテゴリー
+          <p><span class="label">カテゴリー</span><span class="value">
             @foreach ($item->categories as $category)
-              {{ $category->name }}@if(!$loop->last), @endif
+              <span class="category-label">{{ $category->name }}</span>@if(!$loop->last), @endif
             @endforeach
-          </p>
-          <p>商品の状態 {{ $item->condition }}</p>
+          </span></p>
+          <p><span class="label">商品の状態</span><span class="value">{{ $item->condition }}</span></p>
         </div>
         <div class="comments-section">
       <h3>コメント ({{ $item->comments_count }})</h3>
