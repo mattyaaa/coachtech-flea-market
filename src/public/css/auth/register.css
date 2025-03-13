@@ -97,3 +97,47 @@
 .login__button-submit:hover {
     text-decoration: underline;
 }
+
+/* PC (1400-1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .register__content {
+        width: 700px;
+        height: auto;
+        top: 150px;
+        left: calc(50% - 350px);
+    }
+
+    .form__input--text input[type="text"],
+    .form__input--text input[type="email"],
+    .form__input--text input[type="password"] {
+        width: 650px;
+    }
+
+    .form__button-submit {
+        width: 650px;
+    }
+}
+
+/* タブレット (768-850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .register__content {
+        width: 90%;
+        height: auto;
+        top: 100px;
+        left: 5%;
+    }
+
+    .form__label--item {
+        font-size: 18px;
+    }
+
+    .form__input--text input[type="text"],
+    .form__input--text input[type="email"],
+    .form__input--text input[type="password"] {
+        width: 100%;
+    }
+
+    .form__button-submit {
+        width: 100%;
+    }
+}

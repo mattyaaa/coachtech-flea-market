@@ -79,18 +79,48 @@
     margin-top: 5px;
 }
 
-/* レスポンシブデザイン */
-@media (max-width: 600px) {
+/* PC (1400-1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
     .edit-address-container {
+        max-width: 700px;
+    }
+
+    .edit-address-title {
+        font-size: 32px;
+    }
+
+    .edit-address-label {
+        font-size: 22px;
+    }
+
+    .edit-address-button {
+        font-size: 24px;
+    }
+}
+
+/* タブレット (768-850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .edit-address-container {
+        max-width: 100%;
         padding: 10px;
     }
 
     .edit-address-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .edit-address-label {
         font-size: 20px;
     }
 
-    .edit-address-button {
-        padding: 10px;
+    .edit-address-input {
         font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .edit-address-button {
+        font-size: 22px;
+        padding: 10px;
     }
 }

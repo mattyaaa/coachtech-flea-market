@@ -59,3 +59,17 @@
     color: red;
     font-weight: bold;
 }
+
+/* PC (1400-1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .item {
+        width: calc(25% - 20px);
+    }
+}
+
+/* タブレット (768-850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .item {
+        width: calc(50% - 20px);
+    }
+}

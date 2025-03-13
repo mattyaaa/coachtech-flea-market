@@ -181,3 +181,60 @@ h3 {
 .comment-form .btn-primary {
     padding: 10px 20px;
 }
+
+/* PC (1400-1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .item-info h2 {
+        font-size: 40px;
+    }
+
+    .item-info-price {
+        font-size: 30px;
+    }
+
+    .btn-primary {
+        width: 500px;
+        font-size: 22px;
+    }
+}
+
+/* タブレット (768-850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .item-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-image {
+        max-width: 100%;
+    }
+
+    .item-info {
+        max-width: 100%;
+    }
+
+    .item-info h2 {
+        font-size: 30px;
+    }
+
+    .item-info-price {
+        font-size: 25px;
+    }
+
+    .item-extra-info p {
+        font-size: 20px;
+    }
+
+    .item-extra-info .label {
+        width: 120px;
+    }
+
+    .item-extra-info .value {
+        font-size: 18px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        font-size: 20px;
+    }
+}

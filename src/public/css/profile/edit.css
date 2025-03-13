@@ -85,3 +85,44 @@
 .profile-edit-submit-btn:hover {
     background-color: rgb(233, 110, 110);
 }
+
+/* PC (1400-1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .profile-edit-title {
+        font-size: 32px;
+    }
+
+    .profile-edit-form .profile-edit-label {
+        width: 600px;
+        font-size: 22px;
+    }
+
+    .profile-edit-submit-btn {
+        font-size: 22px;
+    }
+}
+
+/* タブレット (768-850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .profile-edit-title {
+        font-size: 28px;
+    }
+
+    .profile-edit-form .profile-edit-label {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .profile-edit-image-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .profile-edit-image {
+        margin: 10px 0;
+    }
+
+    .profile-edit-submit-btn {
+        font-size: 20px;
+    }
+}
