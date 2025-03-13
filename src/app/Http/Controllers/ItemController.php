@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Condition;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -52,7 +54,9 @@ class ItemController extends Controller
     // 商品出品画面
     public function create()
     {
-        return view('item.create');
+        $categories = Category::all();
+        $conditions = Condition::all();
+        return view('item.create', compact('categories', 'conditions'));
     }
 
     // 商品出品処理
