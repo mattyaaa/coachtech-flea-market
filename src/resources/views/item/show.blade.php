@@ -46,7 +46,7 @@
             <p>{{ $comment->user->name }}</p>
           </div>
           <div class="comment-content">
-            <p>{{ $comment->content }}</p>
+            <p>{{ $comment->comment }}</p>
           </div>
         </div>
       @endforeach

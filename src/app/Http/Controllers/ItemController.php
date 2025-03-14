@@ -91,13 +91,13 @@ class ItemController extends Controller
     public function addComment(Request $request, $item_id)
     {
         $request->validate([
-            'comment' => 'required|string'
+            'comment' => 'required|string|max:255'
         ]);
 
         $comment = new Comment();
         $comment->user_id = Auth::id();
         $comment->product_id = $item_id;
-        $comment->content = $request->input('comment');
+        $comment->comment = $request->input('comment');
         $comment->save();
 
         return redirect()->back()->with('status', 'コメントが追加されました。');
