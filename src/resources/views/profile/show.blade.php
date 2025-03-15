@@ -16,7 +16,7 @@
         @endif
       </div>
       <div class="profile-info">
-        <h1 class="user-name">ユーザー名{{ $user->name }}</h1>
+        <h1 class="user-name">{{ $profile->name }}</h1>
         <a href="{{ url('/mypage/profile') }}" class="btn btn-secondary">プロフィールを編集</a>
       </div>
     </div>
