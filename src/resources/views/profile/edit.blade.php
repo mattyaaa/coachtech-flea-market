@@ -48,7 +48,7 @@
         
         <div class="form-group profile-edit-field-group">
             <label for="building" class="profile-edit-label">建物名</label>
-            <input type="text" class="form-control profile-edit-input" id="building" name="building" value="{{ old('building_name', $profile->building_name) }}">
+            <input type="text" class="form-control profile-edit-input" id="building" name="building_name" value="{{ old('building_name', $profile->building_name) }}">
             @error('building')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
