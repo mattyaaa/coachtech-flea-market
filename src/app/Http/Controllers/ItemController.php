@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
@@ -88,12 +89,8 @@ class ItemController extends Controller
     }
 
     // 商品へのコメント追加処理
-    public function addComment(Request $request, $item_id)
+    public function addComment(CommentRequest $request, $item_id)
     {
-        $request->validate([
-            'comment' => 'required|string|max:255'
-        ]);
-
         $comment = new Comment();
         $comment->user_id = Auth::id();
         $comment->product_id = $item_id;

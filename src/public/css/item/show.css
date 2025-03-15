@@ -189,6 +189,14 @@ h3 {
     padding: 10px 20px;
 }
 
+.alert-danger {
+    color: rgba(255, 85, 85, 1);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+}
+
 /* PC (1400-1540px) */
 @media (min-width: 1400px) and (max-width: 1540px) {
     .item-info h2 {

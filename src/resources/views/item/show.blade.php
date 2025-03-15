@@ -57,6 +57,9 @@
       @endforeach
       <div class="comment-form">
         <h4>商品へのコメント</h4>
+        @error('comment')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <form action="/item/{{ $item->id }}/comment" method="POST">
           @csrf
           <div class="form-group">
