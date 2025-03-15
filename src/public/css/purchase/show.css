@@ -70,7 +70,10 @@
 }
 
 .form-group {
-    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 20px;
+    font-size: 20px;
 }
 
 .form-group label {
@@ -82,14 +85,13 @@
 
 .form-group .form-control {
     width: 270px;
-    padding: 10px;
+    font-size: 16px;
+    padding: 5px;
     border-radius: 4px;
 }
 
 .form-control-static {
-    padding: 10px;
     border-radius: 4px;
-    margin-bottom: 10px;
 }
 
 .btn-secondary {
