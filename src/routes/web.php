@@ -50,9 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ProfileController::class, 'show']);
 
     // プロフィール編集画面
-    Route::get('/mypage/profile', [ProfileController::class, 'edit']);
-    Route::put('/mypage/profile', [ProfileController::class, 'update']);
-
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
     // プロフィール画面_購入した商品一覧
     Route::get('/mypage/buy', [ProfileController::class, 'showPurchases']);
     
