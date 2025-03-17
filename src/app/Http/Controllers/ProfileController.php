@@ -80,13 +80,15 @@ class ProfileController extends Controller
     public function showPurchases()
     {
         $user = Auth::user();
-        return view('profile.showPurchases', compact('user'));
+        $purchases = $user->purchases()->with('product')->get();
+        return view('profile.showPurchases', compact('user', 'purchases'));
     }
 
     // 出品した商品一覧を表示する
     public function showSales()
     {
         $user = Auth::user();
-        return view('profile.showSales', compact('user'));
+        $products = $user->products()->get();
+        return view('profile.showSales', compact('user', 'products'));
     }
 }

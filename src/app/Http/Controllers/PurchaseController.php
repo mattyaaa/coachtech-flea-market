@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Profile;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
@@ -36,6 +37,20 @@ class PurchaseController extends Controller
         $request->validate([
             'payment_method' => 'required|string|in:コンビニ支払い,カード支払い',
         ]);
+
+        $item = Product::findOrFail($item_id);
+
+        // 購入処理
+        $purchase = new Purchase();
+        $purchase->user_id = Auth::id();
+        $purchase->product_id = $item->id;
+        $purchase->payment_method = $request->payment_method;
+        $purchase->delivery_address = $request->delivery_address ?? '';
+        $purchase->save();
+
+        // 商品のステータスを"sold"に更新
+        $item->status = 'sold';
+        $item->save();
 
         // 購入完了後の画面にリダイレクト
         return redirect('/')->with('status', '購入手続きが完了しました。');

@@ -28,6 +28,8 @@
             <p class="subtotal-item"><span>支払い方法</span><span id="selected-payment-method">選択してください</span></p>
           </div>
         </div>
+        <form action="{{ route('purchase.purchase', $item->id) }}" method="POST">
+          @csrf
         <button type="submit" class="btn btn-primary">購入する</button>
       </div>
     </div>
@@ -43,6 +45,7 @@
                 <option value="カード支払い">カード支払い</option>
             </select>
           </div>
+          </form>
           <hr class="section-divider"> 
           <div class="purchase-column delivery-address">
             <div class="address-header">

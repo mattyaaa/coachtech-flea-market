@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
 
     // 商品購入処理
-    Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase.purchase');
     
     // 住所変更ページ
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.editAddress');

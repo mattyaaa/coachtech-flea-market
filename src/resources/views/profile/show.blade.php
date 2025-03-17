@@ -38,6 +38,7 @@
                   @else
                     <img src="{{ asset('images/default.png') }}" alt="{{ $product->name }}">
                   @endif
+                  <p>{{ $product->name }}</p>
                 </a>
               </div>
             @endforeach
@@ -56,6 +57,7 @@
                   @else
                     <img src="{{ asset('images/default.png') }}" alt="{{ $purchase->product->name }}">
                   @endif
+                  <p>{{ $purchase->product->name }}</p>
                 </a>
               </div>
             @endforeach
