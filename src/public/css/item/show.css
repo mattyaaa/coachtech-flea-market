@@ -144,11 +144,17 @@ h3 {
 
 .comment {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     padding: 10px;
-    background-color: #f9f9f9;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .comment-user-image {
@@ -160,10 +166,16 @@ h3 {
 
 .comment-user p {
     font-weight: bold;
+    font-size: 20px;
+    margin: 0;
 }
 
 .comment-content p {
     margin: 0;
+    background-color: #E5E5E5;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 .comment-form {
