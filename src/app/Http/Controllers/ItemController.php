@@ -69,21 +69,26 @@ class ItemController extends Controller
             'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'brand' => 'nullable|string|max:255',
+            'condition_id' => 'required|exists:conditions,id',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id',
         ]);
 
-        $item = new Product();
-        $item->name = $request->input('name');
-        $item->description = $request->input('description');
-        $item->price = $request->input('price');
-        $item->user_id = Auth::id();
-        $item->brand = $request->input('brand');
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->user_id = Auth::id();
+        $product->brand = $request->input('brand');
+        $product->condition_id = $request->input('condition_id');
 
         if ($request->hasFile('image')) {
             $filePath = $request->file('image')->store('item_images', 'public');
-            $item->image = $filePath;
+            $product->image = $filePath;
         }
 
-        $item->save();
+        $product->save();
+        $product->categories()->sync($request->input('categories', []));
 
         return redirect('/')->with('status', '商品が出品されました。');
     }
