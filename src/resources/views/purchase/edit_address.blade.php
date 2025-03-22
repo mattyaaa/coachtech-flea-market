@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label for="building" class="edit-address-label">建物名</label>
-        <input type="text" id="building" name="building" value="{{ old('building', $profile->building_name) }}" class="edit-address-input">
+        <input type="text" id="building_name" name="building_name" value="{{ old('building_name', $profile->building_name) }}" class="edit-address-input">
       </div>
       <button type="submit" class="edit-address-button">更新する</button>
     </form>

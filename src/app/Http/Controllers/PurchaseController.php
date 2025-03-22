@@ -71,14 +71,14 @@ class PurchaseController extends Controller
         $request->validate([
             'postal_code' => 'required|string|max:8',
             'address' => 'required|string|max:255',
-            'building' => 'nullable|string|max:255',
+            'building_name' => 'nullable|string|max:255',
         ]);
 
         $user = Auth::user();
         $profile = $user->profile;
         $profile->postal_code = $request->input('postal_code');
         $profile->address = $request->input('address');
-        $profile->building = $request->input('building');
+        $profile->building_name = $request->input('building_name');
         $profile->save();
 
         return redirect()->route('purchase.show', ['item_id' => $item_id])->with('status', '住所が更新されました。');
