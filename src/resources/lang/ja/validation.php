@@ -139,9 +139,12 @@ return [
         'password' => [
             'required' => 'パスワードを入力してください',
             'min' => 'パスワードは8文字以上で入力してください',
+            'confirmed' => 'パスワードと一致しません',
         ],
         'password_confirmation' => [
-            'same' => '確認用パスワードが一致しません',
+            'required' => 'パスワードを入力してください',
+            'min' => 'パスワードは8文字以上で入力してください',
+            'confirmed' => 'パスワードと一致しません',
         ],
         'login' => [
             'email' => [
