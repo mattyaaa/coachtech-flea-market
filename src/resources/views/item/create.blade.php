@@ -13,10 +13,13 @@
       <!-- 商品画像 -->
       <div class="form-group">
         <label for="image">商品画像</label>
-        <div>
+        <div class="image-container">
+          <div id="image-preview" class="image-preview">
+            <img id="preview" src="#" alt="画像プレビュー" style="max-width: 60%; display: none;">
+          </div>
           <div class="image-frame">
-          <label for="image" class="btn btn-secondary">画像を選択する</label>
-          <input type="file" class="form-control-file" id="image" name="image" style="display: none;">
+            <label for="image" class="btn btn-secondary">画像を選択する</label>
+            <input type="file" class="form-control-file" id="image" name="image" style="display: none;" onchange="previewImage(event)">
           </div>
         </div>
       </div>
@@ -85,4 +88,16 @@
     </form>
   </div>
 </main>
+
+<script>
+  function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var output = document.getElementById('preview');
+      output.src = reader.result;
+      output.style.display = 'block';
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
 @endsection

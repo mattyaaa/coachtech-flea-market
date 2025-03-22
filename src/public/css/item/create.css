@@ -114,8 +114,22 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     margin-bottom: 30px;
-    border: 1px solid #5F5F5F;
+}
+
+.image-container {
+    border: 2px solid #ced4da;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.image-preview {
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .category-container {
