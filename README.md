@@ -71,5 +71,6 @@ php artisan db:seed
 
 
 ## URL
-- 開発環境：http://localhost/
+- 商品一覧画面：http://localhost/
+- 会員登録画面：http://localhost/register
 - phpMyAdmin:：http://localhost:8080/
