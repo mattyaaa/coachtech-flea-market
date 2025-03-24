@@ -50,6 +50,8 @@ class ItemController extends Controller
         $item->comments_count = $item->comments()->count();
         $item->favorites_count = $item->favorites()->count();
 
+        $item->is_favorited = Auth::check() && Favorite::where('user_id', Auth::id())->where('product_id', $item_id)->exists();
+
         return view('item.show', compact('item'));
     }
 
