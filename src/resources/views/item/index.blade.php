@@ -16,17 +16,29 @@
       @else
         @foreach ($items as $item)
           <div class="item">
-            <a href="/item/{{ $item->id }}">
-              @if ($item->image)
-                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
-              @else
-                <img src="{{ asset('images/default.png') }}" alt="{{ $item->name }}">
-              @endif
-              <p>{{ $item->name }}</p>
-              @if ($item->status == 'sold')
+            @if ($item->status == 'sold')
+              <div>
+                @if ($item->image)
+                  <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                @else
+                  <img src="{{ asset('images/default.png') }}" alt="{{ $item->name }}">
+                @endif
+                <p>{{ $item->name }}</p>
                 <p class="sold">Sold</p>
-              @endif
-            </a>
+              </div>
+            @else
+              <a href="/item/{{ $item->id }}">
+                @if ($item->image)
+                  <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                @else
+                  <img src="{{ asset('images/default.png') }}" alt="{{ $item->name }}">
+                @endif
+                <p>{{ $item->name }}</p>
+                @if ($item->status == 'sold')
+                  <p class="sold">Sold</p>
+                @endif
+              </a>
+            @endif
           </div>
         @endforeach
       @endif
