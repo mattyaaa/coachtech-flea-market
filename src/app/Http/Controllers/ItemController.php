@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
+use App\Models\Favorite;
 use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
@@ -103,5 +104,44 @@ class ItemController extends Controller
         $comment->save();
 
         return redirect()->back()->with('status', 'コメントが追加されました。');
+    }
+
+    // いいね追加処理
+    public function addFavorite(Request $request, $item_id)
+    {
+    $user_id = Auth::id();
+
+    // すでにいいねしているか確認
+    $favorite = Favorite::where('user_id', $user_id)->where('product_id', $item_id)->first();
+
+    if ($favorite) {
+        // すでにいいねしている場合は何もしない
+        return response()->json(['success' => false, 'message' => 'Already liked']);
+    }
+
+    // いいねを登録
+    Favorite::create([
+        'user_id' => $user_id,
+        'product_id' => $item_id,
+    ]);
+
+    // いいねの合計値を取得
+    $favorites_count = Favorite::where('product_id', $item_id)->count();
+
+    return response()->json(['success' => true, 'favorites_count' => $favorites_count]);
+    }
+
+    //いいね機能解除処理
+    public function removeFavorite(Request $request, $item_id)
+    {
+    $user_id = Auth::id();
+
+    // いいねを解除
+    Favorite::where('user_id', $user_id)->where('product_id', $item_id)->delete();
+
+    // いいねの合計値を取得
+    $favorites_count = Favorite::where('product_id', $item_id)->count();
+
+    return response()->json(['success' => true, 'favorites_count' => $favorites_count]);
     }
 }

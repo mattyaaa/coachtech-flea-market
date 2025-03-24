@@ -21,7 +21,7 @@
         <p class="item-info-price">{{ $item->formatted_price }}</p>
         <div class="item-detail-stats">
           <span class="item-like-button" data-item-id="{{ $item->id }}">
-            <i class="fa-regular fa-star {{ $item->is_favorited ? 'liked' : '' }}"></i> 
+            <i class="fa-regular fa-star {{ $item->is_favorited ? 'liked' : '' }}"></i>
             <span class="item-favorites-count">{{ $item->favorites_count }}</span>
           </span>
           <span class="item-comments-count"><i class="fa-regular fa-comment"></i> {{ $item->comments_count }}</span>
@@ -73,4 +73,33 @@
 </div>
 </div>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var likeButton = document.querySelector('.item-like-button');
+
+  likeButton.addEventListener('click', function() {
+    var itemId = this.getAttribute('data-item-id');
+    var likeIcon = this.querySelector('i');
+    var likeCount = this.querySelector('.item-favorites-count');
+    var isLiked = likeIcon.classList.contains('liked');
+    var url = isLiked ? '/item/' + itemId + '/unfavorite' : '/item/' + itemId + '/favorite';
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        likeCount.textContent = data.favorites_count;
+        likeIcon.classList.toggle('liked');
+      }
+    });
+  });
+});
+</script>
 @endsection

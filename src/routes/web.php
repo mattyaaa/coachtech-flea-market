@@ -57,6 +57,12 @@ Route::middleware('auth')->group(function () {
     
     // プロフィール画面_出品した商品一覧
     Route::get('/mypage/sell', [ProfileController::class, 'showSales']);
+
+    //　いいね追加
+    Route::post('/item/{item_id}/favorite', [ItemController::class, 'addFavorite']);
+
+    // いいね削除
+    Route::delete('/item/{item_id}/favorite', [ItemController::class, 'removeFavorite']);
 });
 
 // 登録画面と登録処理のルート
