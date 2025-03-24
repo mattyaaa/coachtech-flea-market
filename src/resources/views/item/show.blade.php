@@ -83,21 +83,33 @@ document.addEventListener('DOMContentLoaded', function() {
     var likeIcon = this.querySelector('i');
     var likeCount = this.querySelector('.item-favorites-count');
     var isLiked = likeIcon.classList.contains('liked');
-    var url = isLiked ? '/item/' + itemId + '/unfavorite' : '/item/' + itemId + '/favorite';
+    var url = isLiked ? '/item/' + itemId + '/favorite' : '/item/' + itemId + '/favorite';
+    var method = isLiked ? 'DELETE' : 'POST';
 
     fetch(url, {
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-TOKEN': '{{ csrf_token() }}'
       },
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
       if (data.success) {
         likeCount.textContent = data.favorites_count;
         likeIcon.classList.toggle('liked');
+      } else {
+        console.error('Error:', data.message);
       }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again later.');
     });
   });
 });
