@@ -41,7 +41,7 @@
         <div class="comments-section">
       <h3>コメント ({{ $item->comments_count }})</h3>
       @foreach ($item->comments as $comment)
-         <div class="comment">
+        <div class="comment">
               <div class="comment-user">
                 @if ($comment->user->profile->profile_image)
                   <img src="{{ asset('storage/' . $comment->user->profile->profile_image) }}" alt="{{ $comment->user->profile->name }}" class="comment-user-image">

@@ -20,7 +20,7 @@
       </div>
       @if (!request()->is('login') && !request()->is('register'))
       <div class="header-search">
-         <form id="search-form" action="/" method="GET">
+        <form id="search-form" action="/" method="GET">
             @csrf
           <input type="hidden" name="tab" value="{{ request('tab') }}">
           <input type="text" name="search" id="search-input" placeholder="なにをお探しですか？" value="{{ request('search') }}">

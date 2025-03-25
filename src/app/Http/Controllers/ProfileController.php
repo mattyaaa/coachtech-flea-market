@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
         // 出品した商品を取得
         $products = $user->products;
-        
+
         // 購入した商品を取得
         $purchases = $user->purchases;
 
@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $profile = new Profile(['user_id' => $user->id]);
         $profile->save();
         }
-        
+
         return view('profile.edit', compact('user', 'profile'));
     }
 

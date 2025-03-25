@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
     // 商品購入処理
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase.purchase');
-    
+
     // 住所変更ページ
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.editAddress');
 
@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 
     // コメント投稿処理
     Route::post('/item/{item_id}/comment', [ItemController::class, 'addComment']);
-    
+
     // プロフィール画面
     Route::get('/mypage', [ProfileController::class, 'show']);
 
@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
     // プロフィール画面_購入した商品一覧
     Route::get('/mypage/buy', [ProfileController::class, 'showPurchases']);
-    
+
     // プロフィール画面_出品した商品一覧
     Route::get('/mypage/sell', [ProfileController::class, 'showSales']);
 
