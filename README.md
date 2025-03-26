@@ -59,7 +59,8 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
-###　　一般ユーザーのログイン情報
+
+##　　一般ユーザーのログイン情報
 - ユーザー名:テスト 太郎
 - メールアドレス:testtaro@example.com
 - パスワード：testpassword
