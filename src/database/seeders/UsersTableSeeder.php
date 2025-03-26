@@ -24,6 +24,13 @@ class UsersTableSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'username' => 'Test Taro',
+                'email' => 'testtaro@example.com',
+                'password' => Hash::make('testpassword'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ];
 
         DB::table('users')->insert($users);
