@@ -59,6 +59,10 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
+###　　一般ユーザーのログイン情報
+- ユーザー名:テスト 太郎
+- メールアドレス:testtaro@example.com
+- パスワード：testpassword
 
 ## 使用技術(実行環境)
 - PHP:8.3.13
