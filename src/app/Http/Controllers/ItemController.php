@@ -20,24 +20,27 @@ class ItemController extends Controller
         $tab = $request->query('tab', 'recommend');
         $search = $request->query('search', '');
 
+        $query = Product::query();
+        if ($search) {
+            $query->where('name', 'LIKE', "%{$search}%");
+        }
+
         if ($tab == 'mylist') {
             if ($user) {
-                $items = Product::where('name', 'LIKE', "%{$search}%")
-                    ->whereHas('favorites', function ($query) use ($user) {
-                        $query->where('user_id', $user->id);
-                    })->get();
+                $query->whereHas('favorites', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                });
             } else {
                 $items = collect(); // 空のコレクションを返す
             }
         } else {
-            $items = Product::where('name', 'LIKE', "%{$search}%")
-                ->where(function ($query) use ($user) {
-                    if ($user) {
-                        // 自分が出品した商品を除外
-                        $query->where('user_id', '!=', $user->id);
-                    }
-                })->get();
+            if ($user) {
+                // 自分が出品した商品を除外
+                $query->where('user_id', '!=', $user->id);
+            }
         }
+
+        $items = $query->get();
 
         return view('item.index', compact('items', 'tab', 'search'));
     }
