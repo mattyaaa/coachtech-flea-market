@@ -108,7 +108,7 @@ class ItemController extends Controller
         $comment->comment = $request->input('comment');
         $comment->save();
 
-        return redirect()->back()->with('status', 'コメントが追加されました。');
+        return redirect()->back()->with('success', 'コメントを送信しました。');
     }
 
     // いいね追加処理
