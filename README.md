@@ -60,6 +60,12 @@ php artisan migrate
 php artisan db:seed
 ```
 
+### シンボリックリンクの設定
+プロジェクトをクローンした後、画像が表示されない場合は、シンボリックリンクの設定が必要です。以下のコマンドを実行してください。
+```bash
+php artisan storage:link
+```
+
 ## 一般ユーザーのログイン情報
 - ユーザー名:テスト 太郎
 - メールアドレス:testtaro@example.com
